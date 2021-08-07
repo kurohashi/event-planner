@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "f955a42c-fec2-4aef-9977-2077a16a8ef8",
+		"name": "Event Planner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"kurohashi\",\r\n    \"name\": \"Sam Mase\",\r\n    \"password\": \"passkey@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:25000/apis/open/v1/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "25000",
+					"path": [
+						"apis",
+						"open",
+						"v1",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "passkey@1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:25000/apis/v1/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "25000",
+					"path": [
+						"apis",
+						"v1",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "passkey@1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"First_event\",\r\n    \"startdate\": \"2021-07-10\",\r\n    \"enddate\": \"2021-07-20\",\r\n    \"status\": \"open\",\r\n    \"price\": 2000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:25000/apis/admin/v1/event/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "25000",
+					"path": [
+						"apis",
+						"admin",
+						"v1",
+						"event",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get event details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "passkey@1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:25000/apis/v1/event/First_event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "25000",
+					"path": [
+						"apis",
+						"v1",
+						"event",
+						"First_event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Join event",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "kurohashi",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "passkey@1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:25000/apis/v1/event/join/First_event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "25000",
+					"path": [
+						"apis",
+						"v1",
+						"event",
+						"join",
+						"First_event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete event",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "username",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "passkey@1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:25000/apis/admin/v1/event/delete/First_event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "25000",
+					"path": [
+						"apis",
+						"admin",
+						"v1",
+						"event",
+						"delete",
+						"First_event"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

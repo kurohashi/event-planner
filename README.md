@@ -40,3 +40,5 @@
 5. POST http://localhost:25000/apis/admin/v1/event/create
 6. DELETE http://localhost:25000/apis/admin/v1/event/delete/:event
 7. POST http://localhost:25000/apis/admin/v1/event/update
+
+You can fine more info about APIs in "Event Planner.postman_collection.json" file
