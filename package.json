@@ -1,0 +1,37 @@
+{
+  "name": "event_planner",
+  "version": "1.0.0",
+  "description": "Plan events and accept event visitors",
+  "main": "server.js",
+  "dependencies": {
+    "async": "^3.2.0",
+    "aws-sdk": "^2.934.0",
+    "body-parser": "^1.18.3",
+    "child_process": "^1.0.2",
+    "consign": "^0.1.6",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "exec": "^0.2.1",
+    "express": "^4.16.4",
+    "express-useragent": "^1.0.13",
+    "helmet": "^3.15.0",
+    "hpp": "^0.2.2",
+    "http": "0.0.0",
+    "jasmine-node": "^3.0.0",
+    "moment-timezone": "^0.5.23",
+    "mongoose": "^5.3.15",
+    "mongoose-immutable-plugin": "^1.0.1",
+    "node-cron": "^3.0.0",
+    "pg": "^8.6.0",
+    "request": "^2.88.0",
+    "tracer": "^0.9.6",
+    "validator": "^10.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jasmine-node --captureExceptions tests",
+    "start": "node --max-old-space-size=4096 server.js"
+  },
+  "author": "Shubham Srivastava",
+  "license": "ISC"
+}
