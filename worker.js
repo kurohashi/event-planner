@@ -36,6 +36,7 @@ function init() {
 	for (var i in conf.sys.versions) {
 		app.use("/apis/" + conf.sys.versions[i], auth.isAuthenticated, require("./routes/auth." + conf.sys.versions[i]), utils.authFailed);
 		app.use("/apis/admin/" + conf.sys.versions[i], auth.isAdmin, require("./routes/admin." + conf.sys.versions[i]), utils.authFailed);
+		app.use("/apis/open/" + conf.sys.versions[i], require("./routes/open." + conf.sys.versions[i]));
 	}
 
 	app.use(function (req, res) {

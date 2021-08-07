@@ -15,8 +15,8 @@
 2. CREATE TABLE events
     (
         name text NOT NULL,
-        "startDate" date NOT NULL,
-        "endDate" date NOT NULL,
+        "startdate" date NOT NULL,
+        "enddate" date NOT NULL,
         status text NOT NULL,
         price numeric NOT NULL,
         PRIMARY KEY (name)
@@ -33,10 +33,10 @@
 
 **The API endpoints**
 
-1. http://localhost:25000/apis/v1/user/register
-2. http://localhost:25000/apis/v1/user/login
-3. http://localhost:25000/apis/v1/event/join/:event
-4. http://localhost:25000/apis/v1/event/:event
-5. http://localhost:25000/apis/admin/v1/event/create
-6. http://localhost:25000/apis/admin/v1/event/delete/:event
-7. http://localhost:25000/apis/admin/v1/event/update
+1. POST http://localhost:25000/apis/v1/user/register
+2. GET http://localhost:25000/apis/v1/user/login
+3. GET http://localhost:25000/apis/v1/event/join/:event
+4. GET http://localhost:25000/apis/v1/event/:event
+5. POST http://localhost:25000/apis/admin/v1/event/create
+6. DELETE http://localhost:25000/apis/admin/v1/event/delete/:event
+7. POST http://localhost:25000/apis/admin/v1/event/update

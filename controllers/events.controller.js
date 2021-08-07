@@ -67,10 +67,13 @@ function update(req, res) {
  */
 function join(req, res) {
 	let event = req.params.event;
-	let user = req.body;
+	let user = req.headers;
 	if (!(user.username))
 		return send.invalid(res);
-	user.event = event;
+	user = {
+		event: event,
+		username: user.username
+	};
 	async.waterfall([
 		lib.passOn(user),
 		getEvent,
@@ -150,19 +153,15 @@ function updateUser(obj, next) {
  */
 function details(req, res) {
 	let event = req.params.event;
-	let user = req.body;
-	if (!(user.username))
-		return send.invalid(res);
-	user.event = event;
 	async.waterfall([
-		lib.passOn(user),
+		lib.passOn({ event: event }),
 		getEvent,
 		getParticipants,
 	], function (err, data) {
 		if (err)
 			return send.failure(res, err);
 		let result = data.eventDetails;
-		result.participants = obj.participants;
+		result.participants = data.participants;
 		send.ok(res, result);
 	});
 }

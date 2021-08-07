@@ -18,7 +18,7 @@ const route = {
       host: "localhost",
       port: 5432,
       user: "postgres",
-      password: "root",
+      password: "8520",
       database: "events"
     },
   }

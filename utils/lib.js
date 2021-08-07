@@ -112,16 +112,15 @@ function insertQuery(table, obj, callback) {
 		return callback("invalid query");
 	try {
 		let keys = Object.keys(obj);
-		let query = `insert into ${table} (${keys.join(',')}) values `;
+		let query = `insert into ${table} (${keys.join(',')}) values (`;
 		for (let i in obj) {
 			let rec = obj[i];
 			if (typeof rec === 'string')
-				query += `'${rec}'`;
+				query += `'${rec}',`;
 			else
-				query += `${rec}`;
-			if (i < (keys.length - 1))
-				query += ',';
+				query += `${rec},`;
 		}
+		query = query.slice(0, -1);
 		query += ')';
 		console.log(query);
 		conf.db.query(query, callback);
@@ -144,16 +143,15 @@ function selectQuery(table, obj, callback) {
 		let query = `select * from ${table}`;
 		if (isObject(obj)) {
 			query += ` where `;
-			let keys = Object.keys(obj);
+			let where = [];
 			for (let i in obj) {
 				let rec = obj[i];
 				if (typeof rec === 'string')
-					query += `${i}='${rec}'`;
+					where.push(`${i}='${rec}'`);
 				else
-					query += `${i}=${rec}`;
-				if (i < (keys.length - 1))
-					query += ',';
+					where.push(`${i}=${rec}`);
 			}
+			query += where.join(" and ");
 		}
 		console.log(query);
 		conf.db.query(query, callback);
@@ -176,16 +174,14 @@ function selectQuery(table, obj, callback) {
 		let query = `delete from ${table}`;
 		if (isObject(obj)) {
 			query += ` where `;
-			let keys = Object.keys(obj);
 			for (let i in obj) {
 				let rec = obj[i];
 				if (typeof rec === 'string')
-					query += `${i}='${rec}'`;
+					query += `${i}='${rec}',`;
 				else
-					query += `${i}=${rec}`;
-				if (i < (keys.length - 1))
-					query += ',';
+					query += `${i}=${rec},`;
 			}
+			query = query.slice(0, -1);
 		}
 		console.log(query);
 		conf.db.query(query, callback);
@@ -206,27 +202,23 @@ function updateQuery(table, updateObj, queryObj, callback) {
 		return callback("invalid query");
 	try {
 		let query = `update ${table} set `;
-		let len = Object.keys(updateObj);
 		for (let i in updateObj) {
 			let rec = updateObj[i];
 			if (typeof rec === 'string')
-				query += `${i}='${rec}'`;
+				query += `${i}='${rec}',`;
 			else
-				query += `${i}=${rec}`;
-			if (i < (len.length - 1))
-				query += ',';
+				query += `${i}=${rec},`;
 		}
+		query = query.slice(0, -1);
 		query += ' where ';
-		let len = Object.keys(queryObj);
 		for (let i in queryObj) {
 			let rec = queryObj[i];
 			if (typeof rec === 'string')
-				query += `${i}='${rec}'`;
+				query += `${i}='${rec}',`;
 			else
-				query += `${i}=${rec}`;
-			if (i < (len.length - 1))
-				query += ',';
+				query += `${i}=${rec},`;
 		}
+		query = query.slice(0, -1);
 		console.log(query);
 		conf.db.query(query, callback);
 	} catch (error) {

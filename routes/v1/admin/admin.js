@@ -6,7 +6,7 @@ module.exports = function (app) {
     app.route("/event/create")
         .post(ctrl.create);
     app.route("/event/delete/:event")
-        .post(ctrl.delete);
+        .delete(ctrl.delete);
     app.route("/event/update")
         .post(ctrl.update);
 }

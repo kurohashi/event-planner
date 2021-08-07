@@ -9,8 +9,8 @@ module.exports = {
 
 function isAuthenticated(req, res, cb) {
 	let user = {
-		username: req.body.username,
-		password: lib.createHash(req.body.password),
+		username: req.headers.username,
+		password: lib.createHash(req.headers.password),
 	};
 	lib.selectQuery(conf.dbTables.user, user, function (err, data) {
 		if (err || !data.rows.length)
@@ -21,8 +21,8 @@ function isAuthenticated(req, res, cb) {
 
 function isAdmin(req, res, cb) {
 	let user = {
-		username: req.body.username,
-		password: lib.createHash(req.body.password),
+		username: req.headers.username,
+		password: lib.createHash(req.headers.password),
 	};
 	if (user.username != "admin")
 		return cb("unauthenticated");
